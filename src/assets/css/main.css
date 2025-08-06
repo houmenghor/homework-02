@@ -1,0 +1,43 @@
+:root {
+    --primary-color: #2EBB77;
+    --secondary-color: #000;
+}
+.active{
+    color: var(--primary-color) !important;
+}
+.inactive{
+    color: var(--secondary-color) !important;
+}
+.bg-primary{
+    background-color: var(--primary-color) !important;
+}
+.bg-secondary{
+    background-color: var(--secondary-color) !important;
+}
+.nav-icon{
+    position: relative;
+}
+ .overlay{
+    width: 20px;
+    height: 20px;
+    background: var(--primary-color);
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    color: #fff;
+ }
+.hover-icon:hover{
+    opacity: 100 !important;
+    cursor: pointer;
+}
+.pointer{
+    cursor: pointer;
+    opacity: 100 !important;
+}
+.pointer-error{
+    cursor: not-allowed !important;
+}
