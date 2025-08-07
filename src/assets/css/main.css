@@ -2,6 +2,13 @@
     --primary-color: #2EBB77;
     --secondary-color: #000;
 }
+@font-face {
+    font-family: 'KantumruyPro';
+    src: url('../fonts/static/KantumruyPro-Regular.ttf');
+}
+body {
+    font-family: 'KantumruyPro';
+}
 .active{
     color: var(--primary-color) !important;
 }

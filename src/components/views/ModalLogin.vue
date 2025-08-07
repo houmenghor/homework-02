@@ -6,52 +6,51 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content p-5">
                     <div class="mb-4">
-                        <h1 class="modal-title fs-2 fw-bold text-center" id="staticBackdropLabel text-center">Welcome
-                            back!</h1>
-                        <p class="text-center text-black">Enter your Credentials to access your account</p>
+                        <h1 class="modal-title fs-2 fw-bold text-center" id="staticBackdropLabel text-center">
+                            {{ $t('loginModal.title') }}
+                        </h1>
+                        <p class="text-center text-black">{{ $t('loginModal.des') }}</p>
                     </div>
                     <div class="">
                         <form action="" @submit.prevent>
                             <div class="mb-3">
-                                <label for="email" class="form-label text-black m-1">Email</label>
+                                <label for="email" class="form-label text-black m-1">{{ $t('loginModal.labelEmail') }}</label>
                                 <input type="email" class="form-control" id="email" name="email"
-                                    v-model="useHomeStore.formLogin.email" placeholder="Enter your email"
+                                    v-model="useHomeStore.formLogin.email" :placeholder="$t('loginModal.email')"
                                     :class="useHomeStore.validateLogin.email.$error ? 'is-invalid' : ''">
                                 <div class="invalid-feedback" v-if="useHomeStore.validateLogin.email.$error">
                                     {{ useHomeStore.validateLogin.email.$errors[0].$message }}</div>
                             </div>
                             <div class="mb-3">
                                 <div class="d-flex justify-content-between">
-                                    <label for="password" class="form-label text-black m-1">Password</label>
+                                    <label for="password" class="form-label text-black m-1">{{ $t('loginModal.labelPassword') }}</label>
                                     <p class="text-black m-1">
-                                        <span class="text-decoration-none text-primary pointer">Forgot password?
-                                        </span>
+                                        <span class="text-decoration-none text-primary pointer">{{ $t('loginModal.forgot') }}</span>
                                     </p>
                                 </div>
                                 <input type="password" class="form-control" id="password" name="password"
-                                    placeholder="Enter your password" autocomplete=""
+                                    :placeholder="$t('loginModal.password')" autocomplete=""
                                     v-model="useHomeStore.formLogin.password"
                                     :class="useHomeStore.validateLogin.password.$error ? 'is-invalid' : ''">
-                                <div class="invalid-feedback" v-if="useHomeStore.validateLogin.password.$error">{{
-                                    useHomeStore.validateLogin.$errors[0].$message }}</div>
+                                <div class="invalid-feedback" v-if="useHomeStore.validateLogin.password.$error">
+                                    {{ useHomeStore.validateLogin.password.$errors[0].$message }}</div>
                             </div>
                             <div class="mb-3">
                                 <div class="d-flex align-items-baseline">
                                     <input type="checkbox" class="form-check-input me-1" v-model="useHomeStore.formLogin.remember">
-                                    <p class="text-black">Remember me</p>
+                                    <p class="text-black">{{ $t('loginModal.remember') }}</p>
                                 </div>
 
                             </div>
                             <div class="button mb-4">
                                 <button type="submit" class="btn bg-primary w-100 text-white"
-                                    @click="onLogin">Login</button>
+                                    @click="onLogin">{{ $t('loginModal.button') }}</button>
                             </div>
                         </form>
                     </div>
                     <div class="">
-                        <p class="text-center text-black">Don't have an account? <span
-                                class="text-decoration-none text-primary pointer" @click="showModalSignup">Sign up</span>
-
+                        <p class="text-center text-black">{{ $t('loginModal.noAccount') }} 
+                            <span class="text-decoration-none text-primary pointer" @click="showModalSignup">{{ $t('loginModal.signUp') }}</span>
                         </p>
                     </div>
                 </div>
@@ -76,19 +75,16 @@ onMounted(() => {
 })
 const rule = computed(() => ({
     email: {
-        required: helpers.withMessage("Invalid email address or password", required),
+        required: helpers.withMessage("Email is required", required),
         email: helpers.withMessage("Email is not a valid email address", email)
     },
     password: {
-        required: helpers.withMessage("Invalid email address or password", required),
+        required: helpers.withMessage("Password is required", required),
         minLength: helpers.withMessage("Password must be at least 8 characters", minLength(8)),
-
     }
 }))
 useHomeStore.validateLogin = useVuelidate(rule, useHomeStore.formLogin);
 const onLogin = () => {
-    // alert('Login');
-
     useHomeStore.validateLogin.$validate();
     console.log(useHomeStore.validateLogin.$error)
     if (useHomeStore.validateLogin.$error) {
