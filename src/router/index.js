@@ -4,7 +4,6 @@ import AboutView from '../views/AboutView.vue'
 import TeespaceView from '../views/TeespaceView.vue'
 import ShopView from '../views/ShopView.vue'
 import BlogView from '../views/BlogView.vue'
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -13,7 +12,7 @@ const router = createRouter({
       name: 'home',
       component: HomeView,
       meta: {
-        title: 'Home'
+        titleKey: 'home'
       }
     },
     {
@@ -21,7 +20,7 @@ const router = createRouter({
       name: 'teespace',
       component: TeespaceView,
       meta: {
-        title: 'Teespace'
+        titleKey: 'teespace'
       }
     },
     {
@@ -29,7 +28,7 @@ const router = createRouter({
       name: 'shop',
       component: ShopView,
       meta: {
-        title: 'Shop'
+        titleKey: 'shop'
       }
     },
     {
@@ -37,7 +36,7 @@ const router = createRouter({
       name: 'blog',
       component: BlogView,
       meta: {
-        title: 'Blog'
+        titleKey: 'blog'
       }
     },
     {
@@ -45,17 +44,14 @@ const router = createRouter({
       name: 'about',
       component: AboutView,
       meta: {
-        title: 'About Us'
+        titleKey: 'about'
       }
     },
-    {
-      
-    }
   ],
 })
 
-router.afterEach((to) => {
-  document.title = to.meta.title
-})
+// router.afterEach((to) => {
+//   document.title = to.meta.title
+// })
 
 export default router

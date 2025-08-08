@@ -4,39 +4,45 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content p-5">
                     <div class="mb-4">
-                        <h1 class="modal-title fs-2 fw-bold text-center" id="staticBackdropLabel text-center">Welcome
-                            back!</h1>
-                        <p class="text-center text-black">Enter your Credentials to access your account</p>
+                        <h1 class="modal-title fs-2 fw-bold text-center" id="staticBackdropLabel text-center">
+                            {{ $t('registerModal.title') }}
+                        </h1>
+                        <p class="text-center text-black">{{ $t('registerModal.des') }}</p>
                     </div>
                     <div class="">
                         <form action="" @submit.prevent>
                             <div class="mb-3">
-                                <label for="" class="form-label text-black m-1">Name</label>
-                                <input type="text" placeholder="Enter your name" class="form-control"
+                                <label for="" class="form-label text-black m-1">{{ $t('registerModal.labelName')
+                                }}</label>
+                                <input type="text" :placeholder="$t('registerModal.name')" class="form-control"
                                     v-model="useHomeStore.formSignup.name"
                                     :class="useHomeStore.validateSignup.name.$error ? 'is-invalid' : ''">
                                 <div class="invalid-feedback" v-if="useHomeStore.validateSignup.name.$error">{{
                                     useHomeStore.validateSignup.name.$errors[0].$message }}</div>
                             </div>
                             <div class="mb-3">
-                                <label for="" class="form-label text-black m-1">Email</label>
-                                <input type="email" placeholder="Enter your email" class="form-control"
+                                <label for="" class="form-label text-black m-1">{{ $t('registerModal.labelEmail')
+                                }}</label>
+                                <input type="email" :placeholder="$t('registerModal.email')" class="form-control"
                                     v-model="useHomeStore.formSignup.email"
                                     :class="useHomeStore.validateSignup.email.$error ? 'is-invalid' : ''">
                                 <div class="invalid-feedback" v-if="useHomeStore.validateSignup.email.$error">{{
                                     useHomeStore.validateSignup.email.$errors[0].$message }}</div>
                             </div>
                             <div class="mb-3">
-                                <label for="" class="form-label text-black m-1">Password</label>
-                                <input type="password" placeholder="Enter your password" class="form-control"
+                                <label for="" class="form-label text-black m-1">{{ $t('registerModal.labelPassword')
+                                }}</label>
+                                <input type="password" :placeholder="$t('registerModal.password')" class="form-control"
                                     v-model="useHomeStore.formSignup.password"
                                     :class="useHomeStore.validateSignup.password.$error ? 'is-invalid' : ''">
                                 <div class="invalid-feedback" v-if="useHomeStore.validateSignup.password.$error">{{
                                     useHomeStore.validateSignup.password.$errors[0].$message }}</div>
                             </div>
                             <div class="mb-3">
-                                <label for="" class="form-label text-black m-1">Confirm password</label>
-                                <input type="password" placeholder="Confirm your password" class="form-control"
+                                <label for="" class="form-label text-black m-1">{{
+                                    $t('registerModal.confirm') }}</label>
+
+                                <input type="password" :placeholder="$t('registerModal.confirm')" class="form-control"
                                     v-model="useHomeStore.formSignup.confirmPassword"
                                     :class="useHomeStore.validateSignup.confirmPassword.$error ? 'is-invalid' : ''">
                                 <div class="invalid-feedback" v-if="useHomeStore.validateSignup.confirmPassword.$error">
@@ -47,28 +53,30 @@
                                 <div class="d-flex algin-items-baseline">
                                     <input type="checkbox" class="form-check-input me-1"
                                         v-model="useHomeStore.formSignup.agree">
+                                    <p class="text-black">{{ $t('registerModal.agree') }}<span
+                                            class="text-decoration-none text-primary pointer">
+                                            {{ $t('registerModal.term') }}
+                                        </span> {{ $t('registerModal.and') }} <span
+                                            class="text-decoration-none text-primary pointer">
+                                            {{ $t('registerModal.privacy') }}
 
-
-                                    <p class="text-black">I agree to the <span
-                                            class="text-decoration-none text-primary pointer">Terms of
-                                            Service</span> and <span
-                                            class="text-decoration-none text-primary pointer">Privacy
-                                            Policy</span>
+                                        </span>
                                     </p>
                                 </div>
                             </div>
                             <div class="button mb-4">
-                                <button type="submit" class="btn bg-primary w-100 text-white"
-                                    @click="onSignup" :disabled="!useHomeStore.formSignup.agree" 
+                                <button type="submit" class="btn bg-primary w-100 text-white" @click="onSignup"
+                                    :disabled="!useHomeStore.formSignup.agree"
                                     :class="useHomeStore.formSignup.agree ? 'pointer' : 'pointer-error'">
-                                    Sign up
+                                    {{ $t('registerModal.button') }}
                                 </button>
                             </div>
                         </form>
                     </div>
                     <div class="">
-                        <p class="text-center text-black">Already have an account? <span
-                                class="text-decoration-none text-primary pointer" @click="showModalLogin">Login</span>
+                        <p class="text-center text-black">{{ $t('registerModal.haveAcc') }} <span
+                                class="text-decoration-none text-primary pointer" @click="showModalLogin">{{ $t('registerModal.login') }}</span>
+
                         </p>
                     </div>
                 </div>
